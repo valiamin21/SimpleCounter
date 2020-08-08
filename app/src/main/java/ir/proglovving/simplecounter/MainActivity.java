@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import ir.proglovving.cfviews.CTypefaceProvider;
+
+import static ir.proglovving.simplecounter.CounterWidget.updateCounterWidget;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,15 +23,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView numTextView;
     Toolbar toolbar;
 
-    private int x;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        x = CounterPrefManager.getNumber(this);
 
         initViews();
+        updateNumTextView();
 
         increaseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,9 +46,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateNumTextView();
+    }
+
     private void initViews() {
         numTextView = findViewById(R.id.num_tv);
-        setNumber(CounterPrefManager.getNumber(this));
 
         increaseButton = findViewById(R.id.increase_btn);
         decreaseButton = findViewById(R.id.decrease_btn);
@@ -60,32 +66,22 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setNumber(int x) {
-        numTextView.setText(String.valueOf(x));
-    }
 
     private void increaseNumber() {
-        x++;
-        setNumber(x);
-        CounterPrefManager.saveNumber(this, x);
+        CounterPrefManager.increaseNumber(this);
+        updateNumTextView();
         updateCounterWidget(this);
     }
 
     private void decreaseNumber() {
-        x--;
-        setNumber(x);
-        CounterPrefManager.saveNumber(this, x);
+        CounterPrefManager.decreaseNumber(this);
+        updateNumTextView();
         updateCounterWidget(this);
     }
 
-    public static void updateCounterWidget(Context context) {
-        Intent intent = new Intent(context, CounterWidget.class);
-        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        // Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
-        // since it seems the onUpdate() is only fired on that:
-        int[] ids = AppWidgetManager.getInstance(context)
-                .getAppWidgetIds(new ComponentName(context, CounterWidget.class));
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-        context.sendBroadcast(intent);
+    private void updateNumTextView() {
+        numTextView.setText(String.valueOf(CounterPrefManager.getNumber(this)));
     }
+
+
 }

@@ -12,8 +12,20 @@ public class CounterPrefManager {
                 .commit();
     }
 
-    public static int getNumber(Context context){
+    public static int getNumber(Context context) {
         return context.getSharedPreferences(COUNTER_SHARED_PREF_NAME, Context.MODE_PRIVATE)
                 .getInt(KEY_NUMBER, 0);
+    }
+
+    public static int increaseNumber(Context context) {
+        int x = getNumber(context);
+        saveNumber(context, ++x);
+        return x;
+    }
+
+    public static int decreaseNumber(Context context) {
+        int x = getNumber(context);
+        saveNumber(context, --x);
+        return x;
     }
 }

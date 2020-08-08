@@ -13,9 +13,9 @@
         android:id="@+id/increase_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_weight="1"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_widget_arrow_top"
-        android:layout_weight="1"
         tools:ignore="VectorDrawableCompat" />
 
     <TextView
@@ -23,21 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="widget test"
+        android:layout_weight="1"
+        android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
-        tools:text="53"
-        android:layout_weight="1"
-        android:gravity="center"/>
+        tools:text="53" />
 
 
     <ImageView
         android:id="@+id/decrease_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_weight="1"
         android:scaleType="fitCenter"
         android:src="@drawable/ic_widget_arrow_bottom"
-        android:layout_weight="1"
         tools:ignore="VectorDrawableCompat" />
 
 </LinearLayout>
