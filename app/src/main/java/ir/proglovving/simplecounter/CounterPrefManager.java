@@ -9,7 +9,7 @@ public class CounterPrefManager {
     public static void saveNumber(Context context, int number) {
         context.getSharedPreferences(COUNTER_SHARED_PREF_NAME, Context.MODE_PRIVATE)
                 .edit().putInt(KEY_NUMBER, number)
-                .apply();
+                .commit();
     }
 
     public static int getNumber(Context context){

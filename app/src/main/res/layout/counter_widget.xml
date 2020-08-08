@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/counter_widget_selector"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/widget_margin">
+
+
+    <ImageView
+        android:id="@+id/increase_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_widget_arrow_top"
+        android:layout_weight="1"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="widget test"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        tools:text="53"
+        android:layout_weight="1"
+        android:gravity="center"/>
+
+
+    <ImageView
+        android:id="@+id/decrease_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_widget_arrow_bottom"
+        android:layout_weight="1"
+        tools:ignore="VectorDrawableCompat" />
+
+</LinearLayout>

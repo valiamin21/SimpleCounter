@@ -3,16 +3,20 @@ package ir.proglovving.simplecounter;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import ir.proglovving.cfviews.CTypefaceProvider;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton increaseButton, decreaseButton;
+    private ImageView increaseButton, decreaseButton;
     private TextView numTextView;
     Toolbar toolbar;
 
@@ -64,11 +68,24 @@ public class MainActivity extends AppCompatActivity {
         x++;
         setNumber(x);
         CounterPrefManager.saveNumber(this, x);
+        updateCounterWidget(this);
     }
 
     private void decreaseNumber() {
         x--;
         setNumber(x);
         CounterPrefManager.saveNumber(this, x);
+        updateCounterWidget(this);
+    }
+
+    public static void updateCounterWidget(Context context) {
+        Intent intent = new Intent(context, CounterWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        // Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
+        // since it seems the onUpdate() is only fired on that:
+        int[] ids = AppWidgetManager.getInstance(context)
+                .getAppWidgetIds(new ComponentName(context, CounterWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
     }
 }
