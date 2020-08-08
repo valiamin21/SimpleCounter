@@ -7,8 +7,15 @@
     tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/colorPrimary"
+        app:title="بشمار"
+        android:layoutDirection="rtl"/>
 
     <ir.proglovving.cfviews.CfTextView
         android:id="@+id/num_tv"
