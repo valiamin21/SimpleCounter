@@ -13,13 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import ir.proglovving.cfviews.CTypefaceProvider;
 
 import static ir.proglovving.simplecounter.CounterWidget.updateCounterWidget;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView increaseButton, decreaseButton;
+    private FloatingActionButton increaseButton, decreaseButton;
     private TextView numTextView;
     Toolbar toolbar;
 

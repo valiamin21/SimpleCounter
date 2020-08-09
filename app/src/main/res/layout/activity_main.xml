@@ -17,11 +17,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name" />
 
-    <include
-        layout="@layout/counter_layout"
+    <TextView
+        android:id="@+id/num_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorAccent"
+        android:textSize="30dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:text="53" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/increase_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toTopOf="@id/num_tv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:srcCompat="@drawable/ic_widget_arrow_top"
+        android:tint="#000"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/decrease_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/num_tv"
+        app:srcCompat="@drawable/ic_widget_arrow_bottom"
+        android:tint="#000"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
