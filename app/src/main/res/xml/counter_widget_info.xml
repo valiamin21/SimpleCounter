@@ -2,7 +2,7 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/counter_widget"
     android:initialLayout="@layout/counter_widget"
-    android:minWidth="80dp"
+    android:minWidth="40dp"
     android:minHeight="80dp"
     android:previewImage="@drawable/simple_counter_widget_preview_image"
     android:resizeMode="horizontal|vertical"
